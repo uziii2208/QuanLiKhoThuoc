@@ -98,30 +98,32 @@ void printMedicine(const Medicine* med) {
 }
 
 // Print menu and get user choice
-int getMenuChoice() {    // Print fancy header
+int getMenuChoice() {
+    // Print fancy header with double box
     printf("\n%s%s%s", BBLUE, BOLD, BOX_TL);
-    for(int i = 0; i < 30; i++) printf("%s", BOX_H);
+    for(int i = 0; i < 50; i++) printf("%s", BOX_H);
     printf("%s\n", BOX_TR);
-    
-    printf("%s  %s%sQUAN LY KHO THUOC - NHA THUOC LONG CHAU%s%s  %s\n", 
+      printf("%s  %s%s[ QUAN LY KHO THUOC - NHA THUOC LONG CHAU ]%s%s  %s\n", 
            BOX_V, BYELLOW, BOLD, RESET, BBLUE, BOX_V);
+           
+    printf("%s  %s%s[      GVHD : Nguyen Thi Thuy Trang       ]%s%s  %s\n",
+           BOX_V, BCYAN, BOLD, RESET, BBLUE, BOX_V);
     
     printf("%s", BOX_BL);
-    for(int i = 0; i < 30; i++) printf("%s", BOX_H);
-    printf("%s%s\n\n", BOX_BR, RESET);
-
-    // Menu items with different colors
-    printf("%s1.%s %sNhap thuoc moi%s\n", BWHITE, RESET, GREEN, RESET);
-    printf("%s2.%s %sXuat thuoc%s\n", BWHITE, RESET, RED, RESET);
-    printf("%s3.%s %sXem thuoc sap xuat%s\n", BWHITE, RESET, YELLOW, RESET);
-    printf("%s4.%s %sTim kiem thuoc theo ten%s\n", BWHITE, RESET, CYAN, RESET);
-    printf("%s5.%s %sTim kiem thuoc theo loai%s\n", BWHITE, RESET, MAGENTA, RESET);
-    printf("%s6.%s %sHien thi kho thuoc%s\n", BWHITE, RESET, BLUE, RESET);
-    printf("%s7.%s %sXoa thuoc het han%s\n", BWHITE, RESET, RED, RESET);
-    printf("%s8.%s %sThong ke%s\n", BWHITE, RESET, GREEN, RESET);
-    printf("%s0.%s %sThoat%s\n", BWHITE, RESET, BRED, RESET);
-    
-    int choice;    printf("\nChon chuc nang (0-8): ");
+    for(int i = 0; i < 50; i++) printf("%s", BOX_H);
+    printf("%s%s\n", BOX_BR, RESET);    // Menu items with different colors and icons    printf("\n%s+------------------ CHUC NANG ------------------+%s\n", BBLUE, RESET);
+    printf("%s[%s1%s] %s(*) Nhap thuoc moi%s\n", BWHITE, BYELLOW, BWHITE, GREEN, RESET);
+    printf("%s[%s2%s] %s(-) Xuat thuoc%s\n", BWHITE, BYELLOW, BWHITE, RED, RESET);
+    printf("%s[%s3%s] %s(>) Xem thuoc sap xuat%s\n", BWHITE, BYELLOW, BWHITE, YELLOW, RESET);
+    printf("%s[%s4%s] %s(?) Tim kiem thuoc theo ten%s\n", BWHITE, BYELLOW, BWHITE, CYAN, RESET);
+    printf("%s[%s5%s] %s(#) Tim kiem thuoc theo loai%s\n", BWHITE, BYELLOW, BWHITE, MAGENTA, RESET);
+    printf("%s[%s6%s] %s(=) Hien thi kho thuoc%s\n", BWHITE, BYELLOW, BWHITE, BLUE, RESET);
+    printf("%s[%s7%s] %s(!) Xoa thuoc het han%s\n", BWHITE, BYELLOW, BWHITE, RED, RESET);
+    printf("%s[%s8%s] %s(@) Thong ke%s\n", BWHITE, BYELLOW, BWHITE, GREEN, RESET);
+    printf("%s[%s0%s] %s(x) Thoat%s\n", BWHITE, BYELLOW, BWHITE, BRED, RESET);
+    printf("%s+------------------------------------------------+%s\n", BBLUE, RESET);
+      int choice;
+    printf("\n%s%s> Chon chuc nang (0-8):%s ", BYELLOW, BOLD, RESET);
     scanf("%d", &choice);
     clearInputBuffer();
     

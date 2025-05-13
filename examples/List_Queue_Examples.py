@@ -80,12 +80,14 @@ class MedicineQueue:
         return None if self.is_empty() else self.front.data
 
     def is_empty(self) -> bool:
-        return self.front is None
-
+        return self.front is None   
+     
     def search(self, name: str) -> Optional[Medicine]:
         current = self.front
+        search_term = name.lower().strip()
         while current:
-            if current.data.name.lower() == name.lower():
+            # Partial match using "in" operator
+            if search_term in current.data.name.lower():
                 return current.data
             current = current.next
         return None

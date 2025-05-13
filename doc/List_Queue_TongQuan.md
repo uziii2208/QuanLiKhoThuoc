@@ -1,5 +1,43 @@
 # Tổng quan về List và Queue trong Quản lý Kho Thuốc
 
+## Sơ đồ ERD
+
+```mermaid
+classDiagram
+    class Medicine {
+        +string name
+        +string code
+        +string type
+        +int quantity
+        +float price
+        +datetime expiry_date
+        +display()
+        +toString()
+    }
+
+    class Node {
+        +Medicine data
+        +Node* next
+        +Node(Medicine data)
+    }
+
+    class MedicineQueue {
+        +Node* front
+        +Node* rear
+        +int size
+        +enqueue(Medicine)
+        +dequeue() Medicine
+        +peek() Medicine
+        +isEmpty() bool
+        +search(string) Medicine
+        +display()
+    }
+
+    Node "1" *-- "1" Medicine : chứa
+    MedicineQueue "1" o-- "0..*" Node : quản lí
+
+```
+
 ## 1. Danh sách liên kết đơn (Single Linked List)
 
 ### Đặc điểm
