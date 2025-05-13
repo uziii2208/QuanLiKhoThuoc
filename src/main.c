@@ -103,7 +103,7 @@ int getMenuChoice() {    // Print fancy header
     for(int i = 0; i < 30; i++) printf("%s", BOX_H);
     printf("%s\n", BOX_TR);
     
-    printf("%s  %s%sQUAN LY KHO THUOC%s%s  %s\n", 
+    printf("%s  %s%sQUAN LY KHO THUOC - NHA THUOC LONG CHAU%s%s  %s\n", 
            BOX_V, BYELLOW, BOLD, RESET, BBLUE, BOX_V);
     
     printf("%s", BOX_BL);

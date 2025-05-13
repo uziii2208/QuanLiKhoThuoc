@@ -1,55 +1,56 @@
-# Quan Ly Kho Thuoc (Queue voi DSLK don)
 
-Chuong trinh quan ly kho thuoc su dung cau truc du lieu hang doi (Queue) duoc cai dat bang danh sach lien ket don trong C. Giao dien duoc cai thien voi mau sac va ky tu ASCII box-drawing.
+# Quản Lý Kho Thuốc (Queue với Danh Sách Liên Kết Đơn)
 
-## Tinh nang
+Chương trình quản lý kho thuốc sử dụng cấu trúc dữ liệu hàng đợi (Queue) được cài đặt bằng danh sách liên kết đơn trong C. Giao diện được cải thiện với màu sắc và ký tự khung ASCII.
 
-- ✨ Nhap thuoc moi (enqueue)
-- 📦 Xuat thuoc (dequeue)
-- 👀 Xem thuoc sap xuat (peek)
-- 🔍 Tim kiem thuoc (theo ten/loai)
-- 📊 Hien thi kho
-- ⚠️ Quan ly thuoc het han
-- 📈 Thong ke kho
+## Tính năng
 
-## Giao dien
+- ✨ Nhập thuốc mới (enqueue)
+- 📦 Xuất thuốc (dequeue)
+- 👀 Xem thuốc sắp xuất (peek)
+- 🔍 Tìm kiếm thuốc (theo tên/loại)
+- 📊 Hiển thị kho
+- ⚠️ Quản lý thuốc hết hạn
+- 📈 Thống kê kho
 
-- 🎨 Giao dien mau sac dep mat
-- 📦 Box-drawing characters cho khung
-- ✨ Bieu tuong trang thai (✓, →, ⚠)
-- 🎯 Phan biet trang thai bang mau sac
+## Giao diện
 
-## Cau truc du an
+- 🎨 Giao diện màu sắc đẹp mắt
+- 📦 Ký tự khung ASCII cho bảng hiển thị
+- ✨ Biểu tượng trạng thái (✓, →, ⚠)
+- 🎯 Phân biệt trạng thái bằng màu sắc
+
+## Cấu trúc dự án
 
 ```plaintext
 /QuanLyKhoThuoc
 │
-├── /doc                 # Tai lieu
+├── /doc                 # Tài liệu
 │   └── List_Queue_TongQuan.md
 │
-├── /examples           # Vi du minh hoa
+├── /examples            # Ví dụ minh họa
 │   └── List_Queue_Examples.py
 │
-├── /src               # Ma nguon
-│   ├── main.c         # Chuong trinh chinh
-│   ├── queue.h        # Header file
-│   ├── queue.c        # Cai dat Queue
-│   └── colors.h       # Dinh nghia mau va khung
+├── /src                 # Mã nguồn
+│   ├── main.c           # Chương trình chính
+│   ├── queue.h          # Header file
+│   ├── queue.c          # Cài đặt Queue
+│   └── colors.h         # Định nghĩa màu và khung
 │
-├── /test              # Kiem thu
+├── /test                # Kiểm thử
 │   └── performance_test.c
 │
 ├── README.md
 └── Makefile
 ```
 
-## Yeu cau he thong
+## Yêu cầu hệ thống
 
-- Trinh bien dich C (GCC hoac tuong duong)
-- Make (de build)
-- Python 3.x (cho vi du minh hoa - tuy chon)
+- Trình biên dịch C (GCC hoặc tương đương)
+- Make (để build)
+- Python 3.x (cho ví dụ minh họa - tùy chọn)
 
-## Cai dat va Chay
+## Cài đặt và chạy
 
 1. Clone repository:
 
@@ -58,80 +59,80 @@ Chuong trinh quan ly kho thuoc su dung cau truc du lieu hang doi (Queue) duoc ca
    cd QuanLyKhoThuoc
    ```
 
-2. Bien dich:
+2. Biên dịch:
 
    ```bash
    make
    ```
 
-3. Chay chuong trinh:
+3. Chạy chương trình:
 
    ```bash
    make run
    ```
 
-4. Chay test hieu nang:
+4. Chạy kiểm thử hiệu năng:
 
    ```bash
    make test
    ```
 
-## Cau truc du lieu
+## Cấu trúc dữ liệu
 
-### Node (Nut)
+### Node (Nút)
 
 ```c
 struct Node {
-    Medicine data;      // Du lieu thuoc
-    struct Node* next;  // Con tro den node tiep theo
+    Medicine data;      // Dữ liệu thuốc
+    struct Node* next;  // Con trỏ đến node tiếp theo
 };
 ```
 
-### Queue (Hang doi)
+### Queue (Hàng đợi)
 
 ```c
 typedef struct {
-    Node* front;   // Con tro den dau hang doi
-    Node* rear;    // Con tro den cuoi hang doi
-    int size;      // So luong phan tu
+    Node* front;   // Con trỏ đến đầu hàng đợi
+    Node* rear;    // Con trỏ đến cuối hàng đợi
+    int size;      // Số lượng phần tử
 } MedicineQueue;
 ```
 
-### Medicine (Thuoc)
+### Medicine (Thuốc)
 
 ```c
 typedef struct {
-    char name[100];     // Ten thuoc
-    char code[20];      // Ma thuoc
-    char type[50];      // Loai thuoc
-    int quantity;       // So luong
-    float price;        // Gia
-    time_t expiry_date; // Han su dung
+    char name[100];     // Tên thuốc
+    char code[20];      // Mã thuốc
+    char type[50];      // Loại thuốc
+    int quantity;       // Số lượng
+    float price;        // Giá
+    time_t expiry_date; // Hạn sử dụng
 } Medicine;
 ```
 
-## Cac thao tac chinh
+## Các thao tác chính
 
-| Thao tac | Do phuc tap | Mo ta |
+| Thao tác | Độ phức tạp | Mô tả |
 |----------|-------------|-------|
-| enqueue  | O(1)        | Them thuoc vao cuoi hang doi |
-| dequeue  | O(1)        | Lay thuoc tu dau hang doi |
-| peek     | O(1)        | Xem thuoc o dau hang doi |
-| search   | O(n)        | Tim kiem thuoc theo ten/loai |
+| enqueue  | O(1)        | Thêm thuốc vào cuối hàng đợi |
+| dequeue  | O(1)        | Lấy thuốc từ đầu hàng đợi |
+| peek     | O(1)        | Xem thuốc ở đầu hàng đợi |
+| search   | O(n)        | Tìm kiếm thuốc theo tên/loại |
 
-## Hieu nang
+## Hiệu năng
 
-- Quan ly duoc 100,000+ thuoc
-- Toi uu bo nho voi cap phat dong
-- Giai phong bo nho tu dong khi xuat thuoc
-- Test hieu nang chi tiet trong `test/performance_test.c`
+- Quản lý được 100,000+ thuốc
+- Tối ưu bộ nhớ với cấp phát động
+- Giải phóng bộ nhớ tự động khi xuất thuốc
+- Kiểm thử hiệu năng chi tiết trong `test/performance_test.c`
 
-## Giao dien nguoi dung
+## Giao diện người dùng
 
-### Mau sac
+### Màu sắc
 
 ```c
-// Color definitions
+// Định nghĩa màu sắc
 #define RED     "\x1b[31m"
 #define GREEN   "\x1b[32m"
 #define YELLOW  "\x1b[33m"
@@ -141,33 +142,33 @@ typedef struct {
 #define RESET   "\x1b[0m"
 ```
 
-### Box-drawing
+### Khung hiển thị (Box-drawing)
 
 ```c
-#define BOX_TL "+"  // Top-left corner
-#define BOX_TR "+"  // Top-right corner
-#define BOX_BL "+"  // Bottom-left corner
-#define BOX_BR "+"  // Bottom-right corner
-#define BOX_H  "-"  // Horizontal line
-#define BOX_V  "|"  // Vertical line
+#define BOX_TL "+"  // Góc trên bên trái
+#define BOX_TR "+"  // Góc trên bên phải
+#define BOX_BL "+"  // Góc dưới bên trái
+#define BOX_BR "+"  // Góc dưới bên phải
+#define BOX_H  "-"  // Đường ngang
+#define BOX_V  "|"  // Đường dọc
 ```
 
-### Bieu tuong trang thai
+### Biểu tượng trạng thái
 
-- ✓ Thanh cong (mau xanh la)
-- → Thong tin (mau vang)
-- ⚠ Canh bao/Loi (mau do)
+- ✓ Thành công (màu xanh lá)
+- → Thông tin (màu vàng)
+- ⚠ Cảnh báo/Lỗi (màu đỏ)
 
-## Dong gop
+## Đóng góp
 
-Moi dong gop deu duoc hoan nghenh! Vui long:
+Mọi đóng góp đều được hoan nghênh! Vui lòng:
 
-1. Fork du an
-2. Tao branch moi (`git checkout -b feature/AmazingFeature`)
-3. Commit thay doi (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Tao Pull Request
+1. Fork dự án
+2. Tạo branch mới (`git checkout -b feature/TinhNangMoi`)
+3. Commit thay đổi (`git commit -m 'Thêm tính năng mới'`)
+4. Push lên branch (`git push origin feature/TinhNangMoi`)
+5. Tạo Pull Request
 
-## License
+## Giấy phép
 
-MIT
+Non-license
